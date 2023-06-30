@@ -1,0 +1,9 @@
+{
+  "name": "turbo-issue",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "npm@8.19.4",
+  "scripts": {
+    "foo": "cp -r content/a.md dist/a.md"
+  }
+}

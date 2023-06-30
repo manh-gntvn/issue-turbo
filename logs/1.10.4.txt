@@ -1,0 +1,106 @@
+ issue-turbo
+❯  make test-turbo-docker-1.10.4
+docker run --rm -it -v /Users/~~~~~~~~/project/issue-turbo:/app -e 'TURBO_VERSION=1.10.4' -w /app node:18-bullseye make test-turbo
+make[1]: Entering directory '/app'
+
+
+ Cleanup
+ -------------------------------
+
+
+
+rm -fr node_modules
+rm -fr .turbo
+rm -fr dist && mkdir dist
+make reset-content
+make[2]: Entering directory '/app'
+rm -fr content && mkdir content
+echo "1" > content/a.md
+make[2]: Leaving directory '/app'
+find . -type f
+./Makefile
+./turbo.json
+./content/a.md
+./.devcontainer/devcontainer.json
+./README.md
+./logs/1.9.9.txt
+./.gitignore
+./package-lock.json
+./package.json
+./.git/config
+./.git/HEAD
+./.git/hooks/prepare-commit-msg
+make[1]: Leaving directory '/app'
+
+
+ First time - Turbo v(1.10.4)
+ -------------------------------
+
+
+
+CI=true npx turbo@1.10.4 run foo
+npm WARN exec The following package was not found and will be installed: turbo@1.10.4
+• Running foo
+• Remote caching disabled
+foo: cache miss, executing b2dd039cb869092a
+foo:
+foo: > turbo-issue@0.0.1 foo
+foo: > cp -r content/a.md dist/a.md
+foo:
+
+ Tasks:    1 successful, 1 total
+Cached:    0 cached, 1 total
+  Time:    1.145s
+
+
+
+
+
+
+ Second time - Turbo v(1.10.4)
+ -------------------------------
+
+
+
+CI=true npx turbo@1.10.4 run foo
+• Running foo
+• Remote caching disabled
+foo: cache hit, replaying logs b2dd039cb869092a
+foo:
+foo: > turbo-issue@0.0.1 foo
+foo: > cp -r content/a.md dist/a.md
+foo:
+
+ Tasks:    1 successful, 1 total
+Cached:    1 cached, 1 total
+  Time:    180ms >>> FULL TURBO
+
+
+
+
+
+
+ Third time - Turbo v(1.10.4)
+ -------------------------------
+
+
+
+echo "update content folder"
+update content folder
+echo "2" > content/a.md
+echo "2" > content/b.md
+CI=true npx turbo@1.10.4 run foo
+• Running foo
+• Remote caching disabled
+foo: cache hit, replaying logs b2dd039cb869092a
+foo:
+foo: > turbo-issue@0.0.1 foo
+foo: > cp -r content/a.md dist/a.md
+foo:
+
+ Tasks:    1 successful, 1 total
+Cached:    1 cached, 1 total
+  Time:    173ms >>> FULL TURBO
+
+ issue-turbo
+❯
